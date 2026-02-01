@@ -1,0 +1,16 @@
+[package]
+name = "Xbox-Virtual-Controller"
+version = "3.0.0"
+edition = "2021"
+authors = ["Shark"]
+
+[dependencies]
+device_query = "2.0.0"
+directories = "5.0.1"
+winapi = { version = "0.3", features = ["winuser", "processthreadsapi"] }
+serde = { version = "1.0.202", features = ["derive"] }
+toml = "0.8.13"
+vigem-client = "0.1.4"
+
+[build-dependencies]
+embed-resource = "1.8"
