@@ -1,47 +1,64 @@
-# 🎮 Xbox Virtual Controller (by Shark)
+# 🎮 Xbox Virtual Controller (Shark Edition)
 
-Una herramienta potente y ligera escrita en **Rust** que transforma tu teclado y ratón en un mando virtual de Xbox 360 de alta precisión. Ideal para simuladores, juegos de carreras o cualquier título donde un teclado estándar no es suficiente.
-
----
-
-## 🛠️ Requisitos previos (¡Lee esto primero!)
-
-Para que el emulador funcione, tu sistema necesita "hablar" con el mando virtual. Debes instalar el siguiente driver:
-
-1.  **ViGEmBus**: [Descargar última versión aquí](https://github.com/nefarius/ViGEmBus/releases) (Descarga el `.exe` o `.msi` e instálalo).
-2.  **Windows**: Diseñado específicamente para sistemas Windows.
+Una herramienta de alto rendimiento desarrollada en **Rust** que emula un mando de Xbox 360 utilizando el teclado y el ratón. Diseñada para ofrecer latencia cero, estabilidad total y una personalización profunda mediante archivos de configuración.
 
 ---
 
-## 🚀 Cómo empezar
+## 🇪🇸 Versión en Español
 
-1. Descarga el ejecutable `Xbox-Virtual-Controller.exe` desde la sección de **Releases**.
-2. Ejecuta el programa. Se creará automáticamente un archivo `Config.toml` en la misma carpeta.
-3. El mando se conectará instantáneamente como un controlador de Xbox 360 oficial.
+### 🛠️ Instalación y Requisitos
+Para que Windows reconozca el mando virtual, es **estrictamente obligatorio** instalar el driver de bus:
+1. **Descarga el Driver**: [ViGEmBus Runtime](https://github.com/nefarius/ViGEmBus/releases/latest).
+2. **Ejecución**: Abre `Xbox-Virtual-Controller.exe`. El programa generará automáticamente un archivo `Config.toml` si no existe.
+
+### 🔍 Análisis: Pros y Contras
+* **PROS**: 
+    * **Latencia Cero**: Al usar Rust, el procesamiento de teclas es casi instantáneo.
+    * **Seguridad de Foco**: El menú de configuración (`C`, `V`) solo se activa si la ventana negra está al frente, evitando que cambies teclas por error mientras juegas.
+    * **Suavizado de Movimiento**: El `smoothing_factor` permite que el ratón no se sienta brusco, emulando la inercia de un stick real.
+* **CONTRAS**:
+    * **Doble Presencia**: Windows detectará tanto tu teclado real como el mando virtual. Algunos juegos pueden mostrar iconos parpadeantes (cambiando entre teclas y botones de mando). Es un efecto visual normal; el mando siempre tiene prioridad.
+
+### ⌨️ Guía de Mapeo (Config.toml)
+Debes usar los nombres exactos. **Nota:** Las letras siempre van en MAYÚSCULAS.
+
+| Categoría | Nombre en el archivo | Ejemplo |
+| :--- | :--- | :--- |
+| **Letras** | `A` - `Z` | `a = "W"`, `b = "E"` |
+| **Ratón (Ejes)** | `MouseX`, `MouseY` | `ls_x = "MouseX"` |
+| **Ratón (Clicks)** | `Mouse1` (Izq), `Mouse2` (Der) | `rt = "Mouse1"` |
+| **Especiales** | `LControl`, `LShift`, `LAlt`, `Space`, `Enter` | `lb = "LShift"` |
+| **Flechas** | `Up`, `Down`, `Left`, `Right` | `dpad_up = "Up"` |
+
+---
+
+## 🇺🇸 English Version
+
+### 🛠️ Setup & Requirements
+For Windows to recognize the virtual controller, you **must** install the bus driver:
+1. **Download Driver**: [ViGEmBus Runtime](https://github.com/nefarius/ViGEmBus/releases/latest).
+2. **Run**: Launch `Xbox-Virtual-Controller.exe`. A `Config.toml` will be created automatically.
+
+### 🔍 Pros & Cons
+* **PROS**: 
+    * **Zero Lag**: Built with Rust for microsecond-level input processing.
+    * **Focus Security**: Configuration commands (`C`, `V`) only work when the console window is active.
+    * **Input Smoothing**: The `smoothing_factor` adds physics-based inertia to mouse movements for a realistic feel.
+* **CONS**:
+    * **Double Presence**: Windows sees both your keyboard and the controller. Some games might flicker UI icons between keyboard prompts and controller buttons. This is normal; the controller input remains stable.
+
+### ⌨️ Mapping Guide (Config.toml)
+Values are case-sensitive. **Note:** All letters must be UPPERCASE.
+
+| Category | Name in file | Example |
+| :--- | :--- | :--- |
+| **Letters** | `A` - `Z` | `x = "R"`, `y = "F"` |
+| **Mouse (Axis)** | `MouseX`, `MouseY` | `rs_y = "MouseY"` |
+| **Mouse (Clicks)** | `Mouse1` (Left), `Mouse2` (Right) | `rb = "Mouse2"` |
+| **Modifiers** | `LControl`, `LShift`, `LAlt`, `Space`, `Enter` | `back = "Escape"` |
+| **Navigation** | `Up`, `Down`, `Left`, `Right`, `Tab` | `dpad_down = "Down"` |
 
 ---
 
-## ⌨️ Controles e Interfaz (Cosas no tan obvias)
-
-El programa funciona en segundo plano, pero tiene un sistema de seguridad inteligente: **solo aceptará comandos de menú si la ventana de la consola está activa** (para no arruinar tu partida).
-
-* **`[C]` - Menú de Configuración**: Abre el panel para remapear teclas. Puedes escribir letras (A, B, Z) o comandos especiales como `MOUSEX`, `MOUSEY` para los sticks, y `MOUSE1`, `MOUSE2` para disparar.
-* **`[V]` - Ver Mapeo**: Muestra una tabla detallada de qué tecla controla qué botón del mando. Útil para verificar tu configuración antes de entrar a un juego.
-* **`[F10]` - Pausa Global**: ¿Necesitas escribir en el chat del juego? Presiona F10 para pausar la emulación y que tus teclas vuelvan a la normalidad. Presiona de nuevo para retomar el control.
-* **`[F12]` - Salida Segura**: Cierra el programa y desconecta el mando virtual limpiamente.
-
----
-
-## ⚙️ Tips de Configuración
-Si editas el `Config.toml` a mano, el valor `smoothing_factor` (por defecto `0.15`) controla qué tan "suave" se siente el movimiento.
-- **Valores bajos (0.05)**: Movimiento muy lento y fluido (estilo simulación).
-- **Valores altos (0.5)**: Movimiento instantáneo y agresivo.
-
----
-
-## 🦈 Créditos
-Este proyecto es una versión mejorada y personalizada.
-**Desarrollado y mantenido por: Shark**
-
----
-*Disclaimer: Requiere ViGEmBus para la emulación del bus de dispositivos.*
+## 🦈 Shark Edition
+*Developed for performance. Optimized for the community.*
