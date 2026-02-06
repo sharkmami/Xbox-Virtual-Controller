@@ -46,6 +46,7 @@ Utiliza estos nombres en tu configuración para asignar las teclas físicas (`Ke
 * **Mouse:** `MOUSE_X`, `MOUSE_Y`, `LBUTTON`, `RBUTTON`, `MBUTTON`.
 * **Teclas Especiales:** `SPACE`, `LSHIFT`, `RSHIFT`, `LCONTROL`, `LALT`, `RETURN`, `ESCAPE`, `TAB`, `BACKSPACE`.
 * **Movimiento:** `UP`, `DOWN`, `LEFT`, `RIGHT`.
+* **Teclas:**`A` - `Z`
 * **Nulo:** `NONE`.
 
 ---
@@ -76,3 +77,4 @@ Para evitar movimientos bruscos, el motor integra una función de **Interpolaci�
 ---
 
 **Licencia MIT** | Desarrollado por **Sharkmami** 🦈
+
