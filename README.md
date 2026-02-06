@@ -63,7 +63,7 @@ Para eliminar el ruido o "jitter" del mouse, el motor implementa un algoritmo de
 * **Factor Dinámico:** Cambia el `smoothing_factor` (0.01 a 1.0) en tiempo real desde el panel.
 * **Ajuste de Respuesta:** Valores bajos ofrecen fluidez cinematográfica, mientras que 1.0 entrega una respuesta bruta e instantánea.
 
----
 
 **Licencia MIT** | Desarrollado por **Sharkmami** 🦈
+
 
